@@ -1,6 +1,7 @@
 package com.mycompany.app;
 
 import org.apache.commons.io.FilenameUtils;
+import java.lang.Runtime;
 
 public class App 
 {
@@ -15,4 +16,9 @@ public class App
         }
     }
 
+    public App(String input) {
+        Runtime r = Runtime.getRuntime();
+        // ruleid: command-injection-formatted-runtime-call
+        r.exec("/bin/sh -c some_tool" + input);
+    }
 }
